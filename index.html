@@ -31,12 +31,11 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
             border-radius: 4px;
         }
-        /* FIXED: Vibrant, self-contained festive banner that never shows up empty */
         .festive-hero-banner {
             width: 100%;
             height: 180px;
-            background: radial-gradient(circle, #a30029 30%, #5c0016 100%); /* Rich traditional silk maroon */
-            border: 3px double #d4af37; /* Royal gold frame */
+            background: radial-gradient(circle, #a30029 30%, #5c0016 100%);
+            border: 3px double #d4af37;
             border-radius: 6px;
             margin-bottom: 25px;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.15);
@@ -47,7 +46,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Golden traditional motif background accents inside the banner */
         .festive-hero-banner::before {
             content: "🪷 ❀ 🪷 ❀ 🪷 ❀ 🪷 ❀ 🪷";
             font-size: 14pt;
@@ -165,4 +163,147 @@
         .rsvp-title { font-size: 15pt; font-weight: bold; color: #800020; text-align: center; margin-bottom: 15px; border-bottom: 1px solid #e0d0c0; padding-bottom: 8px; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: #4e342e; }
-     
+        .input-text { width: 100%; padding: 10px; border: 1px solid #b8860b; border-radius: 4px; font-family: 'Georgia', serif; }
+        .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+        .radio-option { display: flex; align-items: center; font-size: 11pt; cursor: pointer; }
+        .radio-option input { margin-right: 10px; accent-color: #800020; transform: scale(1.1); }
+        
+        .submit-btn {
+            width: 100%; background-color: #800020; color: #ffffff; border: 1px solid #d4af37;
+            padding: 12px; font-size: 12pt; font-weight: bold; font-family: 'Georgia', serif;
+            border-radius: 4px; cursor: pointer; text-transform: uppercase;
+        }
+        .submit-btn:hover { background-color: #600018; }
+        .submit-btn:disabled { background-color: #bdc3c7; cursor: not-allowed; border-color: #bdc3c7; }
+        #form-message { margin-top: 12px; text-align: center; font-weight: bold; font-size: 11pt; }
+    </style>
+    <script>
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbogKtZ837gUWV8j09G53r9cuWP9hMEJhTLodOdrM3Q4b9mVPxaxTtXzIdbPERrlV9Jg/exec";
+        
+        async function submitRSVP(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const msgBox = document.getElementById('form-message');
+            
+            const name = document.getElementById('guest-name').value.trim();
+            const attending = document.querySelector('input[name="attendance"]:checked').value;
+            const events = attending === "Yes" ? document.querySelector('input[name="event-select"]:checked').value : "N/A";
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting...";
+            msgBox.style.color = "#b8860b";
+            msgBox.innerText = "Sending your response to the hosts...";
+            
+            const payload = new URLSearchParams({ 
+                name: name, 
+                attending: attending, 
+                events: events 
+            });
+            
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    cache: 'no-cache',
+                    body: payload
+                });
+                msgBox.style.color = "#2e7d32";
+                msgBox.innerText = "✨ Thank you! Your RSVP has been saved successfully.";
+                submitBtn.innerText = "Submitted";
+                document.getElementById('rsvp-form').reset();
+            } catch (error) {
+                console.error(error);
+                msgBox.style.color = "#800020";
+                msgBox.innerText = "❌ Something went wrong. Please try again.";
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit RSVP";
+            }
+        }
+        
+        function toggleEventOptions(status) {
+            const optionsBlock = document.getElementById('event-options-block');
+            if (status === 'No') {
+                optionsBlock.style.opacity = '0.3';
+                optionsBlock.querySelectorAll('input').forEach(r => r.disabled = true);
+            } else {
+                optionsBlock.style.opacity = '1';
+                optionsBlock.querySelectorAll('input').forEach(r => r.disabled = false);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="invitation-card">
+        <div class="toranam-container">
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        </div>
+        <div class="invocation">Om Sri Ganeshaya Namaha</div>
+        
+        <div class="festive-hero-banner">
+            <div class="banner-icon">🪷</div>
+            <div class="banner-text">GRIHAPRAVESHAM</div>
+        </div>
+        <div class="greeting">Swagatham</div>
+        <div class="invitation-text">
+            With the divine blessings of our ancestors and the Almighty, <br>
+            we are overjoyed to welcome you to our new abode. Please grace us <br>
+            with your esteemed presence on the auspicious occasion of the
+        </div>
+        <div class="lotus-separator">🪷 🪷 🪷</div>
+        <div class="highlight-box">
+            <div class="event-title">Housewarming Ceremony</div>
+            <table class="details-table">
+                <tr><td class="label-cell">Date:</td><td class="value-cell" style="font-weight: bold;">Wednesday, July 1, 2026</td></tr>
+                <tr><td class="label-cell">Puja Starts:</td><td class="value-cell">6:50 AM</td></tr>
+                <tr><td class="label-cell">Festive Lunch:</td><td class="value-cell">11:00 AM onwards</td></tr>
+            </table>
+        </div>
+        <div class="diya-container"><div class="diya"></div><div class="diya"></div></div>
+        <div class="venue-section">
+            <div class="venue-label">Venue</div>
+            <div class="venue-address"><strong>1102 168th St SW</strong><br>Seattle, WA</div>
+        </div>
+        <div class="poetic-footer">
+            "As we light the traditional lamp and boil the sacred milk,<br>
+            please join us to fill our home with warmth, <br>
+            laughter, and your precious blessings."
+        </div>
+        <div class="hosts-section">
+            <div class="hosts-label">With Warm Welcomes From</div>
+            <div class="hosts-names">From Satya, Shobana and Family</div>
+        </div>
+        <div class="rsvp-section">
+            <div class="rsvp-title">Kindly RSVP by June 28th</div>
+            
+            <form id="rsvp-form" onsubmit="submitRSVP(event)">
+                <div class="form-group">
+                    <label for="guest-name">Your Full Name:</label>
+                    <input type="text" id="guest-name" class="input-text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Will you be attending?</label>
+                    <div class="radio-group" style="flex-direction: row; gap: 25px;">
+                        <label class="radio-option"><input type="radio" name="attendance" value="Yes" checked onclick="toggleEventOptions('Yes')"> Yes, gladly!</label>
+                        <label class="radio-option"><input type="radio" name="attendance" value="No" onclick="toggleEventOptions('No')"> Regretfully No</label>
+                    </div>
+                </div>
+                <div class="form-group" id="event-options-block" style="transition: opacity 0.3s ease;">
+                    <label>Please select the events you will join:</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="event-select" value="Both Puja and Lunch" checked> Both Puja &amp; Festive Lunch</label>
+                        <label class="radio-option"><input type="radio" name="event-select" value="Only Puja"> Grihapravesha Puja Only (6:50 AM)</label>
+                        <label class="radio-option"><input type="radio" name="event-select" value="Only Lunch"> Traditional Festive Lunch Only (11:00 AM)</label>
+                    </div>
+                </div>
+                <button type="submit" id="submit-btn" class="submit-btn">Submit RSVP</button>
+                <div id="form-message"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
