@@ -12,230 +12,195 @@
         body {
             margin: 0;
             padding: 40px 20px;
-            /* Light, subtle textured background mimicking an envelope preview backdrop */
-            background-color: #eae7e2;
+            background: linear-gradient(rgba(255, 244, 230, 0.92), rgba(255, 244, 230, 0.92)), 
+                        url('https://images.unsplash.com/photo-1609137144813-7d722efcb451?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             font-family: 'Georgia', 'Times New Roman', serif;
-            color: #5c4033; /* Soft traditional deep brown */
+            color: #3e2723;
+        }
+
+        .invitation-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.97);
+            border: 6px double #800020;
+            outline: 3px solid #d4af37;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+        }
+
+        /* FIXED: Vibrant, self-contained festive banner that never shows up empty */
+        .festive-hero-banner {
+            width: 100%;
+            height: 180px;
+            background: radial-gradient(circle, #a30029 30%, #5c0016 100%); /* Rich traditional silk maroon */
+            border: 3px double #d4af37; /* Royal gold frame */
+            border-radius: 6px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Golden traditional motif background accents inside the banner */
+        .festive-hero-banner::before {
+            content: "🪷 ❀ 🪷 ❀ 🪷 ❀ 🪷 ❀ 🪷";
+            font-size: 14pt;
+            color: rgba(212, 175, 55, 0.3);
+            position: absolute;
+            top: 10px;
+            letter-spacing: 4px;
+        }
+
+        .banner-icon {
+            font-size: 42pt;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+            animation: glow 2s infinite alternate;
+        }
+
+        .banner-text {
+            color: #d4af37;
+            font-size: 16pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @keyframes glow {
+            0% { filter: drop-shadow(0 2px 4px rgba(255,234,0,0.5)); }
+            100% { filter: drop-shadow(0 4px 12px rgba(255,61,0,0.8)); }
+        }
+
+        .toranam-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            margin-bottom: 25px;
+            padding: 0 10px;
         }
 
-        /* Card container matching the elegant white watercolor paper look */
-        .invitation-card {
-            max-width: 600px;
-            width: 100%;
-            background-color: #ffffff;
-            /* Subtle paper texture overlay */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' fill='none'/%3E%3C/svg%3E");
-            padding: 50px 40px 40px 40px;
-            text-align: center;
+        .leaf {
+            width: 0; height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 28px solid #2e7d32;
+            margin: 0 2px;
             position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-            border-radius: 2px;
         }
 
-        /* Ganesh Symbol at the Top */
-        .ganesha-icon {
-            font-size: 20pt;
-            color: #b8860b;
-            margin-bottom: 10px;
-            display: inline-block;
+        .leaf::before {
+            content: '';
+            position: absolute;
+            top: -38px; left: -10px;
+            width: 20px; height: 20px;
+            background-color: #ff9100;
+            border-radius: 50%;
+        }
+
+        .lotus-separator {
+            font-size: 24pt;
+            color: #e91e63;
+            margin: 15px 0;
         }
 
         .invocation {
-            font-size: 11pt;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #8b7355;
-            margin-bottom: 25px;
+            font-size: 13pt;
+            font-style: italic;
+            color: #800020;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
-        /* Beautiful traditional serif typography matching the reference */
         .greeting {
-            font-size: 32pt;
-            font-weight: 500;
-            color: #a0522d; /* Warm terra cotta/brown tone */
-            margin: 0 0 15px 0;
-            font-family: 'Times New Roman', Times, serif;
-            letter-spacing: 1px;
+            font-size: 28pt;
+            font-weight: bold;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 10px 0;
         }
 
         .invitation-text {
-            font-size: 13pt;
-            line-height: 1.6;
-            color: #6e5440;
-            margin-bottom: 20px;
-            font-style: italic;
+            font-size: 12.5pt;
+            line-height: 1.7;
+            color: #4e342e;
         }
 
-        /* Main Watercolor Feature Graphic matching the user design theme */
-        .watercolor-door-banner {
+        .highlight-box {
+            border-top: 2px dashed #d4af37;
+            border-bottom: 2px dashed #d4af37;
+            padding: 25px 10px;
+            margin: 25px auto;
+            max-width: 90%;
+            background-color: #fffdf9;
+        }
+
+        .event-title {
+            font-size: 22pt;
+            font-weight: bold;
+            color: #800020;
+            margin-bottom: 15px;
+        }
+
+        .details-table {
             width: 100%;
-            height: 320px;
-            background: url('https://images.unsplash.com/photo-1585409605803-03734fc25687?auto=format&fit=crop&q=80&w=800') center bottom no-repeat;
-            background-size: contain;
-            /* Layered illustrative elements representing the traditional Indian entrance decoration */
-            background-image: url('https://cdn.pixabay.com/photo/2023/08/19/13/41/door-8200501_1280.png'), 
-                              linear-gradient(to bottom, transparent 60%, rgba(255,255,255,1) 98%);
-            margin: 15px 0 30px 0;
-            position: relative;
-        }
-
-        /* Fallback decorative border wrapper if image assets filter differently */
-        .details-frame {
-            border-top: 1px solid #e0d5c1;
-            border-bottom: 1px solid #e0d5c1;
-            padding: 20px 0;
-            margin: 25px 0;
-        }
-
-        .event-date {
-            font-size: 14pt;
-            font-weight: bold;
-            color: #a0522d;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .event-time {
-            font-size: 12pt;
-            color: #6e5440;
-            margin-bottom: 5px;
-        }
-
-        .venue-address {
+            max-width: 400px;
+            margin: 0 auto;
             font-size: 13pt;
-            color: #5c4033;
-            line-height: 1.5;
-            margin-top: 15px;
-            font-weight: bold;
         }
 
-        .hosts-section {
-            margin-top: 35px;
-            border-top: 1px dashed #e0d5c1;
-            padding-top: 25px;
-        }
+        .details-table td { padding: 6px 8px; }
+        .label-cell { text-align: right; font-weight: bold; color: #b8860b; width: 45%; }
+        .value-cell { text-align: left; color: #3e2723; width: 55%; }
 
-        .hosts-label {
-            font-size: 9pt;
-            text-transform: uppercase;
-            color: #9c8470;
-            letter-spacing: 1.5px;
-            margin-bottom: 4px;
-        }
+        .diya-container { display: flex; justify-content: center; gap: 40px; margin: 20px 0; }
+        .diya { position: relative; width: 45px; height: 25px; background: linear-gradient(#b8860b, #8b6508); border-radius: 0 0 50px 50px; }
+        .diya::before { content: ''; position: absolute; top: -18px; left: 15px; width: 15px; height: 22px; background: radial-gradient(#ffea00, #ff3d00); border-radius: 50%; }
 
-        .hosts-names {
-            font-size: 15pt;
-            font-weight: bold;
-            color: #a0522d;
-            letter-spacing: 0.5px;
-        }
+        .venue-section { margin: 25px 0; font-size: 13pt; }
+        .venue-label { font-weight: bold; color: #800020; font-size: 15pt; }
 
-        /* Modernized Minimalist Form Section tailored to the clean theme */
+        .poetic-footer { font-size: 11.5pt; font-style: italic; color: #5d4037; line-height: 1.6; }
+        .hosts-section { margin-top: 30px; border-top: 1px solid #f0e6df; padding-top: 20px; }
+        .hosts-label { font-size: 10pt; text-transform: uppercase; color: #757575; }
+        .hosts-names { font-size: 16pt; font-weight: bold; color: #800020; }
+
         .rsvp-section {
             margin-top: 40px;
-            background-color: #fbf9f6;
-            border: 1px solid #e3dac9;
-            border-radius: 4px;
+            background-color: #fff9f2;
+            border: 1px solid #d4af37;
+            border-radius: 6px;
             padding: 25px;
             text-align: left;
         }
 
-        .rsvp-title {
-            font-size: 13pt;
-            font-weight: bold;
-            color: #5c4033;
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 6px;
-            color: #6e5440;
-            font-size: 10.5pt;
-        }
-
-        .input-text {
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #cbd2d6;
-            border-radius: 4px;
-            font-family: 'Georgia', serif;
-            font-size: 11pt;
-            background-color: #ffffff;
-            color: #5c4033;
-            transition: border-color 0.2s;
-        }
-
-        .input-text:focus {
-            outline: none;
-            border-color: #a0522d;
-        }
-
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            font-size: 11pt;
-            cursor: pointer;
-            color: #5c4033;
-        }
-
-        .radio-option input {
-            margin-right: 12px;
-            accent-color: #a0522d;
-            transform: scale(1.1);
-        }
+        .rsvp-title { font-size: 15pt; font-weight: bold; color: #800020; text-align: center; margin-bottom: 15px; border-bottom: 1px solid #e0d0c0; padding-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: #4e342e; }
+        .input-text { width: 100%; padding: 10px; border: 1px solid #b8860b; border-radius: 4px; font-family: 'Georgia', serif; }
+        .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+        .radio-option { display: flex; align-items: center; font-size: 11pt; cursor: pointer; }
+        .radio-option input { margin-right: 10px; accent-color: #800020; transform: scale(1.1); }
         
         .submit-btn {
-            width: 100%;
-            background-color: #a0522d;
-            color: #ffffff;
-            border: none;
-            padding: 13px;
-            font-size: 11pt;
-            font-weight: bold;
-            font-family: 'Georgia', serif;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.2s;
-            margin-top: 10px;
+            width: 100%; background-color: #800020; color: #ffffff; border: 1px solid #d4af37;
+            padding: 12px; font-size: 12pt; font-weight: bold; font-family: 'Georgia', serif;
+            border-radius: 4px; cursor: pointer; text-transform: uppercase;
         }
-
-        .submit-btn:hover {
-            background-color: #8b3a1a;
-        }
-
-        .submit-btn:disabled {
-            background-color: #bdc3c7;
-            cursor: not-allowed;
-        }
-
-        #form-message {
-            margin-top: 14px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 11pt;
-        }
+        .submit-btn:hover { background-color: #600018; }
+        .submit-btn:disabled { background-color: #bdc3c7; cursor: not-allowed; border-color: #bdc3c7; }
+        #form-message { margin-top: 12px; text-align: center; font-weight: bold; font-size: 11pt; }
     </style>
     <script>
         // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
@@ -254,12 +219,12 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "Submitting...";
             msgBox.style.color = "#b8860b";
-            msgBox.innerText = "Saving your response...";
+            msgBox.innerText = "Sending your response to the hosts...";
 
             const payload = { name: name, attending: attending, events: events };
 
             try {
-                await fetch(APPS_SCRIPT_URL, {
+                const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors', 
                     cache: 'no-cache',
@@ -295,53 +260,78 @@
 <body>
 
     <div class="invitation-card">
-        <div class="ganesha-icon">🔱</div>
-        <div class="invocation">Please join us for a</div>
-
-        <h1 class="greeting">Grihapravesham</h1>
-
-        <div class="invitation-text">
-            as we warm up our new home with laughter,<br>
-            love, and good company.
+        <div class="toranam-container">
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+            <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
         </div>
 
-        <div class="watercolor-door-banner"></div>
+        <div class="invocation">Om Sri Ganeshaya Namaha</div>
+        
+        <!-- FIXED: Self-contained interactive banner -->
+        <div class="festive-hero-banner">
+            <div class="banner-icon">🪷</div>
+            <div class="banner-text">GRIHAPRAVESHAM</div>
+        </div>
 
-        <div class="details-frame">
-            <div class="event-date">Wednesday, July 1, 2026</div>
-            <div class="event-time">Puja Ceremony begins at <strong>6:50 AM</strong></div>
-            <div class="event-time">Traditional Festive Lunch at <strong>11:00 AM</strong></div>
-            
-            <div class="venue-address">
-                1102 168th St SW<br>
-                Seattle, WA
-            </div>
+        <div class="greeting">Swagatham</div>
+
+        <div class="invitation-text">
+            With the divine blessings of our ancestors and the Almighty, <br>
+            we are overjoyed to welcome you to our new abode. Please grace us <br>
+            with your esteemed presence on the auspicious occasion of the
+        </div>
+
+        <div class="lotus-separator">🪷 🪷 🪷</div>
+
+        <div class="highlight-box">
+            <div class="event-title">Housewarming Ceremony</div>
+            <table class="details-table">
+                <tr><td class="label-cell">Date:</td><td class="value-cell" style="font-weight: bold;">Wednesday, July 1, 2026</td></tr>
+                <tr><td class="label-cell">Puja Starts:</td><td class="value-cell">6:50 AM</td></tr>
+                <tr><td class="label-cell">Festive Lunch:</td><td class="value-cell">11:00 AM onwards</td></tr>
+            </table>
+        </div>
+
+        <div class="diya-container"><div class="diya"></div><div class="diya"></div></div>
+
+        <div class="venue-section">
+            <div class="venue-label">Venue</div>
+            <div class="venue-address"><strong>1102 168th St SW</strong><br>Seattle, WA</div>
+        </div>
+
+        <div class="poetic-footer">
+            "As we light the traditional lamp and boil the sacred milk,<br>
+            please join us to fill our home with warmth, <br>
+            laughter, and your precious blessings."
         </div>
 
         <div class="hosts-section">
-            <div class="hosts-label">Warm Welcome From</div>
-            <div class="hosts-names">Satya, Shobana and Family</div>
+            <div class="hosts-label">With Warm Welcomes From</div>
+            <div class="hosts-names">From Satya, Shobana and Family</div>
         </div>
 
         <div class="rsvp-section">
-            <div class="rsvp-title">RSVP by June 28th</div>
+            <div class="rsvp-title">Kindly RSVP by June 28th</div>
             
             <form id="rsvp-form" onsubmit="submitRSVP(event)">
                 <div class="form-group">
-                    <label for="guest-name">Your Name:</label>
-                    <input type="text" id="guest-name" class="input-text" placeholder="Enter your full name" required>
+                    <label for="guest-name">Your Full Name:</label>
+                    <input type="text" id="guest-name" class="input-text" placeholder="Enter your name" required>
                 </div>
 
                 <div class="form-group">
                     <label>Will you be attending?</label>
-                    <div class="radio-group" style="flex-direction: row; gap: 30px;">
+                    <div class="radio-group" style="flex-direction: row; gap: 25px;">
                         <label class="radio-option"><input type="radio" name="attendance" value="Yes" checked onclick="toggleEventOptions('Yes')"> Yes, gladly!</label>
                         <label class="radio-option"><input type="radio" name="attendance" value="No" onclick="toggleEventOptions('No')"> Regretfully No</label>
                     </div>
                 </div>
 
                 <div class="form-group" id="event-options-block" style="transition: opacity 0.3s ease;">
-                    <label>Select the events you will join:</label>
+                    <label>Please select the events you will join:</label>
                     <div class="radio-group">
                         <label class="radio-option"><input type="radio" name="event-select" value="Both Puja and Lunch" checked> Both Puja &amp; Festive Lunch</label>
                         <label class="radio-option"><input type="radio" name="event-select" value="Only Puja"> Grihapravesha Puja Only (6:50 AM)</label>
@@ -354,6 +344,5 @@
             </form>
         </div>
     </div>
-
 </body>
 </html>
