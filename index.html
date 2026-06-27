@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grihapravesham Invitation</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            /* Light, subtle textured background mimicking an envelope preview backdrop */
+            background-color: #eae7e2;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #5c4033; /* Soft traditional deep brown */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Card container matching the elegant white watercolor paper look */
+        .invitation-card {
+            max-width: 600px;
+            width: 100%;
+            background-color: #ffffff;
+            /* Subtle paper texture overlay */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' fill='none'/%3E%3C/svg%3E");
+            padding: 50px 40px 40px 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            border-radius: 2px;
+        }
+
+        /* Ganesh Symbol at the Top */
+        .ganesha-icon {
+            font-size: 20pt;
+            color: #b8860b;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .invocation {
+            font-size: 11pt;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8b7355;
+            margin-bottom: 25px;
+        }
+
+        /* Beautiful traditional serif typography matching the reference */
+        .greeting {
+            font-size: 32pt;
+            font-weight: 500;
+            color: #a0522d; /* Warm terra cotta/brown tone */
+            margin: 0 0 15px 0;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 1px;
+        }
+
+        .invitation-text {
+            font-size: 13pt;
+            line-height: 1.6;
+            color: #6e5440;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* Main Watercolor Feature Graphic matching the user design theme */
+        .watercolor-door-banner {
+            width: 100%;
+            height: 320px;
+            background: url('https://images.unsplash.com/photo-1585409605803-03734fc25687?auto=format&fit=crop&q=80&w=800') center bottom no-repeat;
+            background-size: contain;
+            /* Layered illustrative elements representing the traditional Indian entrance decoration */
+            background-image: url('https://cdn.pixabay.com/photo/2023/08/19/13/41/door-8200501_1280.png'), 
+                              linear-gradient(to bottom, transparent 60%, rgba(255,255,255,1) 98%);
+            margin: 15px 0 30px 0;
+            position: relative;
+        }
+
+        /* Fallback decorative border wrapper if image assets filter differently */
+        .details-frame {
+            border-top: 1px solid #e0d5c1;
+            border-bottom: 1px solid #e0d5c1;
+            padding: 20px 0;
+            margin: 25px 0;
+        }
+
+        .event-date {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #a0522d;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .event-time {
+            font-size: 12pt;
+            color: #6e5440;
+            margin-bottom: 5px;
+        }
+
+        .venue-address {
+            font-size: 13pt;
+            color: #5c4033;
+            line-height: 1.5;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .hosts-section {
+            margin-top: 35px;
+            border-top: 1px dashed #e0d5c1;
+            padding-top: 25px;
+        }
+
+        .hosts-label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: #9c8470;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .hosts-names {
+            font-size: 15pt;
+            font-weight: bold;
+            color: #a0522d;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modernized Minimalist Form Section tailored to the clean theme */
+        .rsvp-section {
+            margin-top: 40px;
+            background-color: #fbf9f6;
+            border: 1px solid #e3dac9;
+            border-radius: 4px;
+            padding: 25px;
+            text-align: left;
+        }
+
+        .rsvp-title {
+            font-size: 13pt;
+            font-weight: bold;
+            color: #5c4033;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #6e5440;
+            font-size: 10.5pt;
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd2d6;
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            background-color: #ffffff;
+            color: #5c4033;
+            transition: border-color 0.2s;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: #a0522d;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            font-size: 11pt;
+            cursor: pointer;
+            color: #5c4033;
+        }
+
+        .radio-option input {
+            margin-right: 12px;
+            accent-color: #a0522d;
+            transform: scale(1.1);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background-color: #a0522d;
+            color: #ffffff;
+            border: none;
+            padding: 13px;
+            font-size: 11pt;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #8b3a1a;
+        }
+
+        .submit-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #form-message {
+            margin-top: 14px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+    </style>
+    <script>
+        // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbogKtZ837gUWV8j09G53r9cuWP9hMEJhTLodOdrM3Q4b9mVPxaxTtXzIdbPERrlV9Jg/exec";
+
+        async function submitRSVP(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const msgBox = document.getElementById('form-message');
+            
+            const name = document.getElementById('guest-name').value.trim();
+            const attending = document.querySelector('input[name="attendance"]:checked').value;
+            const events = attending === "Yes" ? document.querySelector('input[name="event-select"]:checked').value : "N/A";
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting...";
+            msgBox.style.color = "#b8860b";
+            msgBox.innerText = "Saving your response...";
+
+            const payload = { name: name, attending: attending, events: events };
+
+            try {
+                await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                msgBox.style.color = "#2e7d32";
+                msgBox.innerText = "✨ Thank you! Your RSVP has been saved successfully.";
+                submitBtn.innerText = "Submitted";
+                document.getElementById('rsvp-form').reset();
+            } catch (error) {
+                console.error(error);
+                msgBox.style.color = "#800020";
+                msgBox.innerText = "❌ Something went wrong. Please try again.";
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit RSVP";
+            }
+        }
+
+        function toggleEventOptions(status) {
+            const optionsBlock = document.getElementById('event-options-block');
+            if (status === 'No') {
+                optionsBlock.style.opacity = '0.3';
+                optionsBlock.querySelectorAll('input').forEach(r => r.disabled = true);
+            } else {
+                optionsBlock.style.opacity = '1';
+                optionsBlock.querySelectorAll('input').forEach(r => r.disabled = false);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="ganesha-icon">🔱</div>
+        <div class="invocation">Please join us for a</div>
+
+        <h1 class="greeting">Grihapravesham</h1>
+
+        <div class="invitation-text">
+            as we warm up our new home with laughter,<br>
+            love, and good company.
+        </div>
+
+        <div class="watercolor-door-banner"></div>
+
+        <div class="details-frame">
+            <div class="event-date">Wednesday, July 1, 2026</div>
+            <div class="event-time">Puja Ceremony begins at <strong>6:50 AM</strong></div>
+            <div class="event-time">Traditional Festive Lunch at <strong>11:00 AM</strong></div>
+            
+            <div class="venue-address">
+                1102 168th St SW<br>
+                Seattle, WA
+            </div>
+        </div>
+
+        <div class="hosts-section">
+            <div class="hosts-label">Warm Welcome From</div>
+            <div class="hosts-names">Satya, Shobana and Family</div>
+        </div>
+
+        <div class="rsvp-section">
+            <div class="rsvp-title">RSVP by June 28th</div>
+            
+            <form id="rsvp-form" onsubmit="submitRSVP(event)">
+                <div class="form-group">
+                    <label for="guest-name">Your Name:</label>
+                    <input type="text" id="guest-name" class="input-text" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Will you be attending?</label>
+                    <div class="radio-group" style="flex-direction: row; gap: 30px;">
+                        <label class="radio-option"><input type="radio" name="attendance" value="Yes" checked onclick="toggleEventOptions('Yes')"> Yes, gladly!</label>
+                        <label class="radio-option"><input type="radio" name="attendance" value="No" onclick="toggleEventOptions('No')"> Regretfully No</label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="event-options-block" style="transition: opacity 0.3s ease;">
+                    <label>Select the events you will join:</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="event-select" value="Both Puja and Lunch" checked> Both Puja &amp; Festive Lunch</label>
+                        <label class="radio-option"><input type="radio" name="event-select" value="Only Puja"> Grihapravesha Puja Only (6:50 AM)</label>
+                        <label class="radio-option"><input type="radio" name="event-select" value="Only Lunch"> Traditional Festive Lunch Only (11:00 AM)</label>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="submit-btn">Submit RSVP</button>
+                <div id="form-message"></div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
